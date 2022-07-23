@@ -4,11 +4,15 @@
     
     <section class="food-search text-center">
         <div class="container">
+            <?php 
+
+               
+                $search = mysqli_real_escape_string($conn, $_POST['search']);
             
-            <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
-                <input type="search" name="search" placeholder="Search for Food.." required>
-                <input type="submit" name="submit" value="Search" class="btn btn-primary">
-            </form>
+            ?>
+
+
+            <h2>Foods on Your Search <a href="#" class="text-white">"<?php echo $search; ?>"</a></h2>
 
         </div>
     </section>
@@ -22,16 +26,17 @@
             <h2 class="text-center">Food Menu</h2>
 
             <?php 
-                
-                $sql = "SELECT * FROM tbl_food WHERE active='Yes'";
 
-               
-                $res=mysqli_query($conn, $sql);
+                
+                $sql = "SELECT * FROM tbl_food WHERE title LIKE '%$search%' OR description LIKE '%$search%'";
+
+                
+                $res = mysqli_query($conn, $sql);
 
                 
                 $count = mysqli_num_rows($res);
 
-                
+               
                 if($count>0)
                 {
                     
@@ -40,11 +45,11 @@
                         
                         $id = $row['id'];
                         $title = $row['title'];
-                        $description = $row['description'];
                         $price = $row['price'];
+                        $description = $row['description'];
                         $image_name = $row['image_name'];
                         ?>
-                        
+
                         <div class="food-menu-box">
                             <div class="food-menu-img">
                                 <?php 
@@ -59,7 +64,8 @@
                                         
                                         ?>
                                         <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                                        <?php
+                                        <?php 
+
                                     }
                                 ?>
                                 
@@ -73,7 +79,7 @@
                                 </p>
                                 <br>
 
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+                                <a href="#" class="btn btn-primary">Order Now</a>
                             </div>
                         </div>
 
@@ -85,9 +91,8 @@
                     
                     echo "<div class='error'>Food not found.</div>";
                 }
-            ?>
-
             
+            ?>
 
             
 

@@ -1,9 +1,9 @@
 <?php
-//start session
+
 session_start();
 
 
-// create constant
+
 define('SITEURL', 'http://localhost/my-kitchen/');
 define('LOCALHOST', 'localhost');
 define('DB_USERNAME', 'root');

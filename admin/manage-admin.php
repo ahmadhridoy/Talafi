@@ -12,7 +12,7 @@
                     if(isset($_SESSION['add']))
                     {
                         echo $_SESSION['add']; 
-                        unset($_SESSION['add']);
+                        unset($_SESSION['add']); 
                     }
 
                     if(isset($_SESSION['delete']))
@@ -48,7 +48,7 @@
                 ?>
                 <br><br><br>
 
-                
+               
                 <a href="add-admin.php" class="btn-primary">Add Admin</a>
 
                 <br /><br /><br />
@@ -65,7 +65,7 @@
                     <?php 
                         
                         $sql = "SELECT * FROM tbl_admin";
-                        
+                       
                         $res = mysqli_query($conn, $sql);
 
                         
@@ -75,9 +75,11 @@
                             $count = mysqli_num_rows($res); 
 
                             $sn=1; 
+
+                            
                             if($count>0)
                             {
-                               
+                                
                                 while($rows=mysqli_fetch_assoc($res))
                                 {
                                     
@@ -105,7 +107,7 @@
                             }
                             else
                             {
-                                //We Do not Have Data in Database
+                                
                             }
                         }
 
@@ -117,5 +119,6 @@
 
             </div>
         </div>
-        
+        <!-- Main Content Setion Ends -->
+
 <?php include('partials/footer.php'); ?>

@@ -3,6 +3,7 @@
 
 
 
+   
     <section class="categories">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
@@ -15,6 +16,7 @@
                 
                 $res = mysqli_query($conn, $sql);
 
+               
                 $count = mysqli_num_rows($res);
 
                 
@@ -66,7 +68,7 @@
             <div class="clearfix"></div>
         </div>
     </section>
-    
+   
 
 
     <?php include('partials-front/footer.php'); ?>
